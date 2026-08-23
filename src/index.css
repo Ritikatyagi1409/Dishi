@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --color-warm-cream: #FAF9F6;
+  --color-dusty-rose: #7C5454;
+  --color-blush-pink: #F4E1E1;
+  --color-soft-lavender: #CEC2D9;
+  --color-subtle-gold: #D4AF37;
+  --color-on-background: #231919;
+  --color-surface-container: #fceae9;
+  --color-surface-container-low: #fff0f0;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-high: #f6e4e4;
+  --color-surface-container-highest: #f1dede;
+  --color-surface-variant: #f1dede;
+  --color-on-surface-variant: #504444;
+  --color-secondary-container: #e5d9eb;
+  --color-on-secondary-container: #665e6d;
+  --color-on-surface: #231919;
+  --color-primary: #7c5454;
+
+  --font-display: "Playfair Display", serif;
+  --font-note: "Literata", serif;
+  --font-body: "DM Sans", sans-serif;
+}
+
+/* Material Symbols Integration */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+}
+.material-symbols-outlined.fill {
+  font-variation-settings: 'FILL' 1;
+}
+
+/* Custom Animations */
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float {
+  animation: gentle-float 6s ease-in-out infinite;
+}
+
+/* Scrapbook Deckled Edge / Torn Paper Mask */
+.paper-mask {
+  mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 Q10,2 20,0 T40,0 T60,0 T80,0 T100,0 V100 Q90,98 80,100 T60,100 T40,100 T20,100 T0,100 Z" fill="black"/></svg>');
+  mask-size: 100% 100%;
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 Q10,2 20,0 T40,0 T60,0 T80,0 T100,0 V100 Q90,98 80,100 T60,100 T40,100 T20,100 T0,100 Z" fill="black"/></svg>');
+  -webkit-mask-size: 100% 100%;
+}
+
+/* Hide Scrollbar for Horizontal Sliders */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Open When... Envelope flip animations */
+.envelope-flap {
+  transform-origin: top;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+}
+.envelope-content {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.envelope.open .envelope-content {
+  transform: translateY(-20px);
+}
+
+/* Scrapbook Polaroid Tilt Animations */
+.polaroid {
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.polaroid:hover {
+  transform: scale(1.05) rotate(0deg) !important;
+  z-index: 40;
+}
+
+/* Override default Vite CSS */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #FAF9F6;
+  color: #231919;
+  font-family: "DM Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
