@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { FaHeart, FaStar } from 'react-icons/fa';
 import { HiSparkles } from 'react-icons/hi2';
 import { FaArrowUp, FaImages, FaSeedling } from 'react-icons/fa';
+import { FaArrowRight, FaFilm } from 'react-icons/fa';
 import './App.css';
 
 function FadeIn({ children, delay = 0, className = "", style = {}, viewportMargin = "-100px", as = "div", ...props }) {
@@ -338,53 +339,70 @@ useEffect(() => {
         </section>
 
         {/* Section 3: If This Year Was a Movie */}
-        <section className="py-20 relative overflow-hidden">
-          <FadeIn className="max-w-5xl mx-auto px-6 mb-12">
-            <h2 className="font-display text-3xl md:text-4xl text-dusty-rose text-center font-semibold">
-              If This Year Was a Movie
-            </h2>
-          </FadeIn>
+<section className="py-20 relative overflow-hidden">
+  <FadeIn className="max-w-5xl mx-auto px-6 mb-4">
+    <h2 className="font-display text-3xl md:text-4xl text-dusty-rose text-center font-semibold">
+      If This Year Was a Movie
+    </h2>
+  </FadeIn>
 
-          <div className="flex overflow-x-auto hide-scrollbar gap-6 px-6 md:px-24 pb-12 snap-x snap-mandatory">
-            <FadeIn className="min-w-[85vw] md:min-w-[380px] snap-center bg-surface-container p-8 rounded-2xl shadow-[0_4px_15px_rgba(124,84,84,0.03)] border border-surface-variant/30">
-              <div className="font-semibold text-xs tracking-widest text-subtle-gold mb-2 uppercase">Chapter 01</div>
-              <h3 className="font-display text-xl text-on-surface mb-3 font-semibold">The Quiet Beginning</h3>
-              <p className="text-on-surface-variant text-sm font-light leading-relaxed">
-                A fresh sheet of paper, filled with silent potential and hopes waiting to take root.
-              </p>
-            </FadeIn>
+  <FadeIn className="text-center mb-12 px-6">
+    <p className="font-note text-sm text-on-surface-variant/60 italic flex items-center justify-center gap-2">
+      <FaArrowRight className="text-[10px] opacity-50 animate-pulse" />
+      Swipe through the chapters
+    </p>
+  </FadeIn>
 
-            <FadeIn delay={0.1} className="min-w-[85vw] md:min-w-[380px] snap-center bg-surface-container p-8 rounded-2xl shadow-[0_4px_15px_rgba(124,84,84,0.03)] border border-surface-variant/30">
-              <div className="font-semibold text-xs tracking-widest text-subtle-gold mb-2 uppercase">Chapter 02</div>
-              <h3 className="font-display text-xl text-on-surface mb-3 font-semibold">Unexpected Twists</h3>
-              <p className="text-on-surface-variant text-sm font-light leading-relaxed">
-                The beautiful surprises, laughter at midnight, and spontaneous trips that made it all worthwhile.
-              </p>
-            </FadeIn>
+  <div className="flex overflow-x-auto hide-scrollbar gap-6 px-6 md:px-24 pb-12 snap-x snap-mandatory">
+    {[
+      { num: "01", title: "The Quiet Beginning", text: "A fresh sheet of paper, filled with silent potential and hopes waiting to take root." },
+      { num: "02", title: "Unexpected Twists", text: "The beautiful surprises, laughter at midnight, and spontaneous trips that made it all worthwhile." },
+      { num: "03", title: "Stitched Memories", text: "The milestones achieved, lessons learned, and the connections that became even tighter." },
+      { num: "04", title: "What Lies Ahead", text: "The next unwritten pages, filled with stories waiting for you to live them." },
+      { num: "05", title: "Full Circle", text: "The people, places, and little rituals that made this year feel like coming home." },
+      { num: "06", title: "What Lies Ahead", text: "The next unwritten pages, filled with stories waiting for you to live them." },
+    ].map((chapter, idx) => (
+      <FadeIn
+        key={chapter.num}
+        delay={idx * 0.1}
+        className="group min-w-[85vw] md:min-w-[380px] snap-center bg-surface-container p-8 rounded-2xl shadow-[0_4px_15px_rgba(124,84,84,0.03)] border border-surface-variant/30 hover:border-dusty-rose/30 hover:shadow-[0_8px_30px_rgba(124,84,84,0.08)] transition-all duration-500 relative overflow-hidden"
+      >
+        <div className="absolute -right-4 -top-4 font-display text-8xl text-dusty-rose/[0.04] font-bold select-none">
+          {chapter.num}
+        </div>
 
-            <FadeIn delay={0.2} className="min-w-[85vw] md:min-w-[380px] snap-center bg-surface-container p-8 rounded-2xl shadow-[0_4px_15px_rgba(124,84,84,0.03)] border border-surface-variant/30">
-              <div className="font-semibold text-xs tracking-widest text-subtle-gold mb-2 uppercase">Chapter 03</div>
-              <h3 className="font-display text-xl text-on-surface mb-3 font-semibold">Stitched Memories</h3>
-              <p className="text-on-surface-variant text-sm font-light leading-relaxed">
-                The milestones achieved, lessons learned, and the connections that became even tighter.
-              </p>
-            </FadeIn>
-
-            <FadeIn delay={0.3} className="min-w-[85vw] md:min-w-[380px] snap-center bg-surface-container p-8 rounded-2xl shadow-[0_4px_15px_rgba(124,84,84,0.03)] border border-surface-variant/30">
-              <div className="font-semibold text-xs tracking-widest text-subtle-gold mb-2 uppercase">Chapter 04</div>
-              <h3 className="font-display text-xl text-on-surface mb-3 font-semibold">What Lies Ahead</h3>
-              <p className="text-on-surface-variant text-sm font-light leading-relaxed">
-                The next unwritten pages, filled with stories waiting for you to live them.
-              </p>
-            </FadeIn>
+        <div className="relative z-10">
+          <div className="flex items-center gap-2 mb-3">
+            <FaFilm className="text-subtle-gold text-xs" />
+            <div className="font-semibold text-xs tracking-widest text-subtle-gold uppercase">
+              Chapter {chapter.num}
+            </div>
           </div>
+          <h3 className="font-display text-xl text-on-surface mb-3 font-semibold group-hover:text-dusty-rose transition-colors duration-300">
+            {chapter.title}
+          </h3>
+          <p className="text-on-surface-variant text-sm font-light leading-relaxed">
+            {chapter.text}
+          </p>
+        </div>
+      </FadeIn>
+    ))}
+  </div>
 
-          <FadeIn className="text-center mt-6 px-6">
-            <p className="font-note text-lg text-dusty-rose italic font-medium">
-              And somehow, the best chapter hasn't even happened yet. ✨
-            </p>
-          </FadeIn>
-        </section>
+  {/* Scroll progress dots */}
+  <div className="flex items-center justify-center gap-2 -mt-6 mb-8">
+    {[0, 1, 2, 3,4,5].map((i) => (
+      <div key={i} className={`h-1.5 rounded-full bg-dusty-rose/30 transition-all duration-300 ${i === 0 ? 'w-6 bg-dusty-rose/60' : 'w-1.5'}`} />
+    ))}
+  </div>
+
+  <FadeIn className="text-center mt-6 px-6 flex items-center justify-center gap-2">
+    <HiSparkles className="text-subtle-gold text-sm" />
+    <p className="font-note text-lg text-dusty-rose italic font-medium">
+      And somehow, the best chapter hasn't even happened yet.
+    </p>
+  </FadeIn>
+</section>
 
         {/* Section 4: Memory Polaroids */}
         {/* Section 4: Memory Polaroids */}
